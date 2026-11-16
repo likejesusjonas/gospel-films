@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f6f1e6">
+<title data-i18n="docTitle">복음 소개 영상 — 언어별 모음</title>
+<meta name="description" data-i18n-content="metaDescription" content="예수, 성탄, 교회, 용서, 부활, 기도를 다루는 짧은 복음 소개 영상 10편을 중국어·일본어·아랍어로 만나 보세요.">
+<style>
+  :root {
+    --bg: #f6f1e6;
+    --surface: #fcf9f2;
+    --ink: #1e1a15;
+    --ink-soft: #2a2826;
+    --muted: #675d50;
+    --accent: #83561a;
+    --accent-ja: #8a5a2b;
+    --accent-ar: #6b552c;
+    --rule: #ddd2bf;
+
+    --latin-serif: "Iowan Old Style", "Palatino Linotype", "Palatino", "Book Antiqua", Georgia, serif;
+    --serif-ko: "AppleMyungjo", "Nanum Myeongjo", "Noto Serif KR", "Noto Serif CJK KR", "Batang", serif;
+    --serif-ja: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Noto Serif JP", "Noto Serif CJK JP", serif;
+    --serif-zh: "Songti SC", "STSong", "Noto Serif SC", "Noto Serif CJK SC", "SimSun", serif;
+    --serif-ar: "Noto Naskh Arabic", "Amiri", "Al Nile", "Geeza Pro", "Times New Roman", serif;
+    --sans-ko: system-ui, -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Segoe UI", sans-serif;
+    --sans-ja: system-ui, -apple-system, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+    --sans-zh: system-ui, -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    --sans-ar: "Geeza Pro", "Noto Sans Arabic", "Segoe UI", Tahoma, system-ui, sans-serif;
+
+    --serif: var(--serif-ko);
+    --sans: var(--sans-ko);
+    --toolbar-space: 76px;
+  }
+  html[lang="ja"] { --serif: var(--serif-ja); --sans: var(--sans-ja); }
+  html[lang="zh"] { --serif: var(--serif-zh); --sans: var(--sans-zh); }
+  html[lang="ar"] { --serif: var(--serif-ar); --sans: var(--sans-ar); }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-padding-top: calc(var(--toolbar-space) + 8px);
+    background: var(--bg);
+  }
+
+  body {
+    margin: 0;
+    min-width: 0;
+    padding-top: var(--toolbar-space);
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1rem;
+    line-height: 1.7;
+    overflow-x: clip;
+    overflow-wrap: anywhere;
+  }
+  html[lang="ko"] body { word-break: keep-all; }
+  html[lang="ar"] body { line-height: 1.9; font-size: 1.0625rem; }
+
+  h1, h2, h3, p, ul, ol { margin: 0; }
+  ul, ol { padding: 0; list-style: none; }
+
+  a { color: inherit; }
+
+  :focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .skip-link {
+    position: fixed;
+    left: 12px;
+    top: -120px;
+    z-index: 100;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 18px;
+    background: var(--ink);
+    color: var(--surface);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 999px;
+  }
+  .skip-link:focus,
+  .skip-link:focus-visible { top: 12px; outline-color: var(--accent); }
+
+  /* Language toolbar: always pinned to the physical right edge */
+  .language-switcher {
+    position: fixed;
+    top: 12px;
+    right: max(10px, env(safe-area-inset-right));
+    left: auto;
+    z-index: 50;
+    direction: ltr;
+    display: flex;
+    gap: 2px;
+    padding: 4px;
+    max-width: calc(100vw - 20px);
+    background: rgba(252, 249, 242, 0.95);
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    box-shadow: 0 6px 20px -12px rgba(30, 26, 21, 0.45);
+  }
+  @supports ((-webkit-backdrop-filter: blur(6px)) or (backdrop-filter: blur(6px))) {
+    .language-switcher {
+      background: rgba(252, 249, 242, 0.86);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+    }
+  }
+  .language-switcher button {
+    appearance: none;
+    -webkit-appearance: none;
+    min-width: 44px;
+    min-height: 44px;
+    margin: 0;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.18s ease, color 0.18s ease;
+  }
+  .language-switcher button[lang="ko"] { font-family: var(--sans-ko); }
+  .language-switcher button[lang="ja"] { font-family: var(--sans-ja); }
+  .language-switcher button[lang="zh"] { font-family: var(--sans-zh); }
+  .language-switcher button[lang="ar"] { font-family: var(--sans-ar); font-size: 0.9375rem; }
+  .language-switcher button:hover { background: rgba(131, 86, 26, 0.1); }
+  .language-switcher button[aria-pressed="true"] {
+    background: var(--ink);
+    color: var(--surface);
+  }
+  .language-switcher button:focus-visible { outline-offset: 1px; }
+
+  @media (max-width: 360px) {
+    .language-switcher { right: 8px; gap: 0; padding: 3px; }
+    .language-switcher button { padding: 0 8px; font-size: 0.8125rem; }
+    .language-switcher button[lang="ar"] { font-size: 0.875rem; }
+  }
+
+  .wrap {
+    width: 100%;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding-left: clamp(20px, 5vw, 56px);
+    padding-right: clamp(20px, 5vw, 56px);
+  }
+
+  main:focus { outline: none; }
+
+  /* Masthead */
+  .masthead {
+    padding-top: clamp(28px, 6vw, 72px);
+    padding-bottom: clamp(36px, 6vw, 72px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--accent);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  html[lang="ar"] .eyebrow { letter-spacing: 0; font-size: 0.9375rem; }
+  .eyebrow::before {
+    content: "";
+    flex: 0 0 auto;
+    width: 28px;
+    height: 1px;
+    background: currentColor;
+  }
+  .masthead h1 {
+    margin-top: 18px;
+    max-width: 14em;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(2.1rem, 6.4vw, 4.4rem);
+    line-height: 1.16;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  html[lang="ar"] .masthead h1 { letter-spacing: 0; line-height: 1.4; }
+  .intro {
+    margin-top: clamp(18px, 3vw, 28px);
+    max-width: 36em;
+    color: var(--muted);
+    font-family: var(--serif);
+    font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+    line-height: 1.8;
+  }
+  html[lang="ar"] .intro { line-height: 2; }
+
+  /* Editions */
+  .editions { padding-top: clamp(40px, 6vw, 72px); }
+  .section-head {
+    display: grid;
+    gap: 10px;
+    margin-bottom: clamp(24px, 4vw, 40px);
+  }
+  @media (min-width: 900px) {
+    .section-head {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+      align-items: end;
+      gap: 40px;
+    }
+  }
+  .section-head h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    line-height: 1.3;
+  }
+  .helper {
+    color: var(--muted);
+    font-size: 0.9375rem;
+    max-width: 40em;
+  }
+
+  .edition-list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(16px, 2.4vw, 24px);
+  }
+  @media (min-width: 900px) {
+    .edition-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  .edition-list > li { display: flex; min-width: 0; }
+
+  .edition-card {
+    --card-accent: var(--accent);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    padding: clamp(22px, 3vw, 32px);
+    padding-top: clamp(26px, 3.4vw, 36px);
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--card-accent);
+    border-radius: 4px 4px 14px 14px;
+    overflow: hidden;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  }
+  .edition-card.is-ja { --card-accent: var(--accent-ja); }
+  .edition-card.is-ar { --card-accent: var(--accent-ar); }
+  .edition-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 36px -24px rgba(30, 26, 21, 0.55);
+    border-color: #cfc1a8;
+    border-top-color: var(--card-accent);
+  }
+
+  .edition-glyph {
+    position: absolute;
+    top: 6px;
+    right: 14px;
+    font-size: clamp(5.5rem, 10vw, 7.5rem);
+    line-height: 1;
+    color: var(--card-accent);
+    opacity: 0.09;
+    pointer-events: none;
+    user-select: none;
+  }
+  html[dir="rtl"] .edition-glyph { right: auto; left: 14px; }
+
+  .edition-meta {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px 14px;
+    padding-bottom: 14px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .edition-index {
+    font-family: var(--latin-serif);
+    font-style: italic;
+    font-size: 0.9375rem;
+    color: var(--card-accent);
+  }
+  .edition-native {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+  .edition-native[lang="zh"], .edition-glyph[lang="zh"] { font-family: var(--serif-zh); }
+  .edition-native[lang="ja"], .edition-glyph[lang="ja"] { font-family: var(--serif-ja); }
+  .edition-native[lang="ar"], .edition-glyph[lang="ar"] { font-family: var(--serif-ar); }
+  .edition-native[lang="ar"] { font-size: 1.1875rem; }
+
+  .edition-card h3 {
+    position: relative;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(1.375rem, 2.2vw, 1.625rem);
+    line-height: 1.3;
+  }
+  .edition-count {
+    position: relative;
+    margin-top: 6px;
+    color: var(--card-accent);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  .edition-desc {
+    position: relative;
+    margin-top: 14px;
+    margin-bottom: 24px;
+    color: var(--muted);
+    font-family: var(--serif);
+    font-size: 1rem;
+    line-height: 1.8;
+    flex: 1 1 auto;
+  }
+  html[lang="ar"] .edition-desc { line-height: 2; }
+
+  .edition-link {
+    position: relative;
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 0 18px;
+    border: 1px solid var(--card-accent);
+    border-radius: 999px;
+    color: var(--card-accent);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    text-decoration: none;
+    transition: background-color 0.18s ease, color 0.18s ease;
+  }
+  .edition-link::after {
+    content: "";
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    right: -9999px;
+    bottom: -9999px;
+  }
+  .edition-card { isolation: isolate; }
+  .edition-card .edition-link::after {
+    position: fixed;
+    inset: auto;
+  }
+  .edition-card:hover .edition-link,
+  .edition-link:focus-visible {
+    background: var(--card-accent);
+    color: var(--surface);
+  }
+  .edition-link:focus-visible {
+    outline: 3px solid var(--card-accent);
+    outline-offset: 3px;
+  }
+  .edition-arrow {
+    display: inline-block;
+    font-family: var(--latin-serif);
+    transition: transform 0.18s ease;
+  }
+  .edition-card:hover .edition-arrow { transform: translateX(3px); }
+  html[dir="rtl"] .edition-arrow { transform: scaleX(-1); }
+  html[dir="rtl"] .edition-card:hover .edition-arrow { transform: scaleX(-1) translateX(3px); }
+
+  /* Whole-card click target without breaking layout */
+  .card-hit {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  /* Topics */
+  .topics {
+    margin-top: clamp(48px, 7vw, 88px);
+    padding-top: clamp(32px, 5vw, 48px);
+    border-top: 1px solid var(--rule);
+  }
+  .topics h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(1.375rem, 2.6vw, 1.75rem);
+    line-height: 1.3;
+  }
+  .topics-intro {
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+  .topic-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr));
+    gap: 12px;
+    margin-top: 22px;
+  }
+  .topic-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    min-width: 0;
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+  }
+  .topic-num {
+    font-family: var(--latin-serif);
+    font-style: italic;
+    font-size: 0.875rem;
+    color: var(--accent);
+  }
+  .topic-name {
+    font-family: var(--serif);
+    font-size: 1.0625rem;
+    font-weight: 600;
+  }
+
+  /* Footer */
+  .site-footer {
+    margin-top: clamp(56px, 8vw, 104px);
+    padding-top: 28px;
+    padding-bottom: 40px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.875rem;
+  }
+  .site-footer .wrap {
+    display: grid;
+    gap: 6px;
+  }
+  .footer-title {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      transition: none !important;
+      animation: none !important;
+      scroll-behavior: auto !important;
+    }
+    .edition-card:hover { transform: none; }
+    .edition-card:hover .edition-arrow { transform: none; }
+    html[dir="rtl"] .edition-card:hover .edition-arrow { transform: scaleX(-1); }
+  }
+
+  @media (forced-colors: active) {
+    .edition-card { border: 1px solid CanvasText; }
+    .language-switcher button[aria-pressed="true"] { outline: 2px solid Highlight; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-i18n="skip">본문으로 건너뛰기</a>
+
+<header class="site-header">
+  <div class="language-switcher" role="group" aria-label="화면 언어 선택" data-i18n-aria-label="switcherLabel">
+    <button type="button" data-language="ko" lang="ko" aria-pressed="true">한국어</button>
+    <button type="button" data-language="ja" lang="ja" aria-pressed="false">日本語</button>
+    <button type="button" data-language="ar" lang="ar" dir="rtl" aria-pressed="false">العربية</button>
+    <button type="button" data-language="zh" lang="zh" aria-pressed="false">中文</button>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+  <section class="masthead" aria-labelledby="page-title">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="eyebrow">복음 소개 · 언어별 모음</p>
+      <h1 id="page-title" data-i18n="title">한 이야기, 세 개의 언어</h1>
+      <p class="intro" data-i18n="intro">예수 그리스도의 복음을 짧고 차분하게 전하는 소개 영상 열 편을 중국어, 일본어, 아랍어로 준비했습니다. 소개하고 싶은 분의 언어를 골라 해당 페이지로 이동해 보세요.</p>
+    </div>
+  </section>
+
+  <section class="editions" aria-labelledby="editions-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="editions-heading" data-i18n="editionsHeading">언어별 모음 둘러보기</h2>
+        <p class="helper" id="editions-helper" data-i18n="helper">아래 세 언어 가운데 하나를 선택하면 해당 언어의 영상 목록 페이지가 열립니다. 위의 버튼은 이 안내 페이지의 표시 언어만 바꿉니다.</p>
+      </div>
+
+      <ul class="edition-list" aria-labelledby="editions-heading" aria-describedby="editions-helper">
+        <li>
+          <article class="edition-card is-zh" aria-labelledby="edition-zh-title">
+            <span class="edition-glyph" lang="zh" aria-hidden="true">中</span>
+            <div class="edition-meta">
+              <span class="edition-index" aria-hidden="true">01</span>
+              <span class="edition-native" lang="zh">中文</span>
+            </div>
+            <h3 id="edition-zh-title" data-i18n="zhLabel">중국어 모음</h3>
+            <p class="edition-count" data-i18n="editionCount">짧은 소개 10편</p>
+            <p class="edition-desc" data-i18n="zhDesc">간체 중국어로 예수의 생애와 성탄의 의미, 교회와 용서, 부활과 기도를 열 편의 짧은 이야기로 소개합니다.</p>
+            <a class="edition-link" href="https://likejesusjonas.github.io/chinese-gospel-ten-films/" hreflang="zh"><span data-i18n="zhCta">중국어 모음 열기</span><span class="edition-arrow" aria-hidden="true">→</span></a>
+          </article>
+        </li>
+        <li>
+          <article class="edition-card is-ja" aria-labelledby="edition-ja-title">
+            <span class="edition-glyph" lang="ja" aria-hidden="true">日</span>
+            <div class="edition-meta">
+              <span class="edition-index" aria-hidden="true">02</span>
+              <span class="edition-native" lang="ja">日本語</span>
+            </div>
+            <h3 id="edition-ja-title" data-i18n="jaLabel">일본어 모음</h3>
+            <p class="edition-count" data-i18n="editionCount">짧은 소개 10편</p>
+            <p class="edition-desc" data-i18n="jaDesc">일본어로 예수는 누구인지, 성탄과 교회, 용서와 부활, 그리고 기도에 관한 열 편의 짧은 소개를 담았습니다.</p>
+            <a class="edition-link" href="https://likejesusjonas.github.io/japanese-gospel-ten-films/" hreflang="ja"><span data-i18n="jaCta">일본어 모음 열기</span><span class="edition-arrow" aria-hidden="true">→</span></a>
+          </article>
+        </li>
+        <li>
+          <article class="edition-card is-ar" aria-labelledby="edition-ar-title">
+            <span class="edition-glyph" lang="ar" aria-hidden="true">ع</span>
+            <div class="edition-meta">
+              <span class="edition-index" aria-hidden="true">03</span>
+              <span class="edition-native" lang="ar" dir="rtl">العربية</span>
+            </div>
+            <h3 id="edition-ar-title" data-i18n="arLabel">아랍어 모음</h3>
+            <p class="edition-count" data-i18n="editionCount">짧은 소개 10편</p>
+            <p class="edition-desc" data-i18n="arDesc">아랍어로 예수의 이야기와 성탄, 교회 공동체, 용서, 부활의 소망, 기도를 열 편의 짧은 영상으로 전합니다.</p>
+            <a class="edition-link" href="https://likejesusjonas.github.io/arabic-gospel-ten-films/" hreflang="ar"><span data-i18n="arCta">아랍어 모음 열기</span><span class="edition-arrow" aria-hidden="true">→</span></a>
+          </article>
+        </li>
+      </ul>
+
+      <section class="topics" aria-labelledby="topics-heading">
+        <h2 id="topics-heading" data-i18n="topicsHeading">다루는 주제</h2>
+        <p class="topics-intro" data-i18n="topicsIntro">세 언어 모음 모두 같은 여섯 가지 주제를 중심으로 구성되어 있습니다.</p>
+        <ul class="topic-list">
+          <li><span class="topic-num" aria-hidden="true">i</span><span class="topic-name" data-i18n="topicJesus">예수</span></li>
+          <li><span class="topic-num" aria-hidden="true">ii</span><span class="topic-name" data-i18n="topicChristmas">성탄</span></li>
+          <li><span class="topic-num" aria-hidden="true">iii</span><span class="topic-name" data-i18n="topicChurch">교회</span></li>
+          <li><span class="topic-num" aria-hidden="true">iv</span><span class="topic-name" data-i18n="topicForgiveness">용서</span></li>
+          <li><span class="topic-num" aria-hidden="true">v</span><span class="topic-name" data-i18n="topicResurrection">부활</span></li>
+          <li><span class="topic-num" aria-hidden="true">vi</span><span class="topic-name" data-i18n="topicPrayer">기도</span></li>
+        </ul>
+      </section>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-title" data-i18n="footerTitle">복음 소개 영상 · 언어별 모음</p>
+    <p data-i18n="footerNote">각 링크는 해당 언어 모음 페이지로 이동합니다.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var STORAGE_KEY = 'gospelHub.language';
+  var DEFAULT_LANGUAGE = 'ko';
+
+  var translations = {
+    ko: {
+      docTitle: '복음 소개 영상 — 언어별 모음',
+      metaDescription: '예수, 성탄, 교회, 용서, 부활, 기도를 다루는 짧은 복음 소개 영상 10편을 중국어·일본어·아랍어로 만나 보세요.',
+      skip: '본문으로 건너뛰기',
+      switcherLabel: '화면 언어 선택',
+      eyebrow: '복음 소개 · 언어별 모음',
+      title: '한 이야기, 세 개의 언어',
+      intro: '예수 그리스도의 복음을 짧고 차분하게 전하는 소개 영상 열 편을 중국어, 일본어, 아랍어로 준비했습니다. 소개하고 싶은 분의 언어를 골라 해당 페이지로 이동해 보세요.',
+      editionsHeading: '언어별 모음 둘러보기',
+      helper: '아래 세 언어 가운데 하나를 선택하면 해당 언어의 영상 목록 페이지가 열립니다. 위의 버튼은 이 안내 페이지의 표시 언어만 바꿉니다.',
+      editionCount: '짧은 소개 10편',
+      zhLabel: '중국어 모음',
+      zhDesc: '간체 중국어로 예수의 생애와 성탄의 의미, 교회와 용서, 부활과 기도를 열 편의 짧은 이야기로 소개합니다.',
+      zhCta: '중국어 모음 열기',
+      jaLabel: '일본어 모음',
+      jaDesc: '일본어로 예수는 누구인지, 성탄과 교회, 용서와 부활, 그리고 기도에 관한 열 편의 짧은 소개를 담았습니다.',
+      jaCta: '일본어 모음 열기',
+      arLabel: '아랍어 모음',
+      arDesc: '아랍어로 예수의 이야기와 성탄, 교회 공동체, 용서, 부활의 소망, 기도를 열 편의 짧은 영상으로 전합니다.',
+      arCta: '아랍어 모음 열기',
+      topicsHeading: '다루는 주제',
+      topicsIntro: '세 언어 모음 모두 같은 여섯 가지 주제를 중심으로 구성되어 있습니다.',
+      topicJesus: '예수',
+      topicChristmas: '성탄',
+      topicChurch: '교회',
+      topicForgiveness: '용서',
+      topicResurrection: '부활',
+      topicPrayer: '기도',
+      footerTitle: '복음 소개 영상 · 언어별 모음',
+      footerNote: '각 링크는 해당 언어 모음 페이지로 이동합니다.'
+    },
+    ja: {
+      docTitle: '福音紹介ビデオ — 言語別コレクション',
+      metaDescription: 'イエス、クリスマス、教会、赦し、復活、祈りをテーマにした短い福音紹介ビデオ10本を、中国語・日本語・アラビア語でご覧いただけます。',
+      skip: '本文へスキップ',
+      switcherLabel: '表示言語の選択',
+      eyebrow: '福音紹介 · 言語別コレクション',
+      title: 'ひとつの物語を、三つの言葉で',
+      intro: 'イエス・キリストの福音を短く穏やかに伝える紹介ビデオ10本を、中国語、日本語、アラビア語で用意しました。届けたい方の言語を選んで、各ページへお進みください。',
+      editionsHeading: '言語別コレクションを見る',
+      helper: '下の三つの言語から一つを選ぶと、その言語のビデオ一覧ページが開きます。上部のボタンは、この案内ページの表示言語だけを切り替えます。',
+      editionCount: '短い紹介 10本',
+      zhLabel: '中国語版',
+      zhDesc: '簡体字の中国語で、イエスの生涯とクリスマスの意味、教会と赦し、復活と祈りを10本の短いお話で紹介します。',
+      zhCta: '中国語版を開く',
+      jaLabel: '日本語版',
+      jaDesc: 'イエスとはどなたか、クリスマスと教会、赦しと復活、そして祈りについて、日本語の短い紹介を10本収めています。',
+      jaCta: '日本語版を開く',
+      arLabel: 'アラビア語版',
+      arDesc: 'アラビア語で、イエスの物語、クリスマス、教会の交わり、赦し、復活の希望、祈りを10本の短いビデオでお伝えします。',
+      arCta: 'アラビア語版を開く',
+      topicsHeading: '取り上げるテーマ',
+      topicsIntro: '三つの言語版はいずれも、同じ六つのテーマを軸に構成されています。',
+      topicJesus: 'イエス',
+      topicChristmas: 'クリスマス',
+      topicChurch: '教会',
+      topicForgiveness: '赦し',
+      topicResurrection: '復活',
+      topicPrayer: '祈り',
+      footerTitle: '福音紹介ビデオ · 言語別コレクション',
+      footerNote: '各リンクから、それぞれの言語版ページへ移動します。'
+    },
+    ar: {
+      docTitle: 'أفلام قصيرة تعرّف بالإنجيل — النسخ اللغوية',
+      metaDescription: 'عشرة أفلام قصيرة تعرّف بالإنجيل وتتناول يسوع والميلاد والكنيسة والغفران والقيامة والصلاة، متاحة بالصينية واليابانية والعربية.',
+      skip: 'انتقل إلى المحتوى الرئيسي',
+      switcherLabel: 'اختيار لغة العرض',
+      eyebrow: 'تعريف بالإنجيل · النسخ اللغوية',
+      title: 'قصة واحدة بثلاث لغات',
+      intro: 'أعددنا عشرة أفلام قصيرة تقدّم بشارة يسوع المسيح بهدوء وإيجاز، باللغات الصينية واليابانية والعربية. اختر لغة من تودّ أن تشاركه الرسالة، وانتقل إلى صفحتها.',
+      editionsHeading: 'استكشف النسخ اللغوية',
+      helper: 'اختر إحدى اللغات الثلاث أدناه لتفتح صفحة قائمة الأفلام بتلك اللغة. أما الأزرار في الأعلى فتغيّر لغة عرض هذه الصفحة فقط.',
+      editionCount: 'عشرة تعريفات قصيرة',
+      zhLabel: 'النسخة الصينية',
+      zhDesc: 'تعرّف بحياة يسوع ومعنى الميلاد والكنيسة والغفران والقيامة والصلاة في عشر قصص قصيرة باللغة الصينية المبسّطة.',
+      zhCta: 'افتح النسخة الصينية',
+      jaLabel: 'النسخة اليابانية',
+      jaDesc: 'عشرة تعريفات قصيرة باللغة اليابانية عن شخص يسوع، والميلاد والكنيسة، والغفران والقيامة، والصلاة.',
+      jaCta: 'افتح النسخة اليابانية',
+      arLabel: 'النسخة العربية',
+      arDesc: 'قصة يسوع، والميلاد، وشركة الكنيسة، والغفران، ورجاء القيامة، والصلاة، في عشرة أفلام قصيرة باللغة العربية.',
+      arCta: 'افتح النسخة العربية',
+      topicsHeading: 'الموضوعات',
+      topicsIntro: 'تدور النسخ اللغوية الثلاث جميعها حول الموضوعات الستة نفسها.',
+      topicJesus: 'يسوع',
+      topicChristmas: 'الميلاد',
+      topicChurch: 'الكنيسة',
+      topicForgiveness: 'الغفران',
+      topicResurrection: 'القيامة',
+      topicPrayer: 'الصلاة',
+      footerTitle: 'أفلام قصيرة تعرّف بالإنجيل · النسخ اللغوية',
+      footerNote: 'ينقلك كل رابط إلى صفحة النسخة اللغوية الخاصة به.'
+    },
+    zh: {
+      docTitle: '福音介绍短片 — 多语言版本',
+      metaDescription: '十部简短的福音介绍短片，涵盖耶稣、圣诞、教会、饶恕、复活与祷告，提供中文、日文和阿拉伯文版本。',
+      skip: '跳到主要内容',
+      switcherLabel: '选择显示语言',
+      eyebrow: '福音介绍 · 多语言版本',
+      title: '同一个故事，三种语言',
+      intro: '我们以中文、日文和阿拉伯文，准备了十部简短而温和地介绍耶稣基督福音的短片。请选择您想分享的对象所使用的语言，前往相应页面。',
+      editionsHeading: '浏览各语言版本',
+      helper: '从下方三种语言中选择一种，即可打开该语言的短片列表页面。顶部按钮只会切换本页面的显示语言。',
+      editionCount: '十部简短介绍',
+      zhLabel: '中文版',
+      zhDesc: '以简体中文，用十个简短的故事介绍耶稣的生平、圣诞的意义、教会与饶恕、复活与祷告。',
+      zhCta: '打开中文版',
+      jaLabel: '日文版',
+      jaDesc: '以日文收录十部简短介绍，讲述耶稣是谁、圣诞与教会、饶恕与复活，以及祷告。',
+      jaCta: '打开日文版',
+      arLabel: '阿拉伯文版',
+      arDesc: '以阿拉伯文，通过十部短片讲述耶稣的故事、圣诞、教会团契、饶恕、复活的盼望与祷告。',
+      arCta: '打开阿拉伯文版',
+      topicsHeading: '涵盖主题',
+      topicsIntro: '三个语言版本都围绕同样的六个主题展开。',
+      topicJesus: '耶稣',
+      topicChristmas: '圣诞',
+      topicChurch: '教会',
+      topicForgiveness: '饶恕',
+      topicResurrection: '复活',
+      topicPrayer: '祷告',
+      footerTitle: '福音介绍短片 · 多语言版本',
+      footerNote: '每个链接都会前往对应语言版本的页面。'
+    }
+  };
+
+  var root = document.documentElement;
+  var buttons = Array.prototype.slice.call(document.querySelectorAll('.language-switcher [data-language]'));
+
+  function isSupported(lang) {
+    return typeof lang === 'string' && Object.prototype.hasOwnProperty.call(translations, lang);
+  }
+
+  function readStored() {
+    try {
+      var value = window.localStorage.getItem(STORAGE_KEY);
+      return isSupported(value) ? value : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function writeStored(lang) {
+    try {
+      window.localStorage.setItem(STORAGE_KEY, lang);
+    } catch (e) {
+      /* storage unavailable; selection still applies for this visit */
+    }
+  }
+
+  function applyLanguage(lang) {
+    var dict = translations[lang];
+
+    root.setAttribute('lang', lang);
+    root.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+    Array.prototype.forEach.call(document.querySelectorAll('[data-i18n]'), function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (Object.prototype.hasOwnProperty.call(dict, key)) el.textContent = dict[key];
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-i18n-aria-label]'), function (el) {
+      var key = el.getAttribute('data-i18n-aria-label');
+      if (Object.prototype.hasOwnProperty.call(dict, key)) el.setAttribute('aria-label', dict[key]);
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-i18n-content]'), function (el) {
+      var key = el.getAttribute('data-i18n-content');
+      if (Object.prototype.hasOwnProperty.call(dict, key)) el.setAttribute('content', dict[key]);
+    });
+
+    document.title = dict.docTitle;
+
+    buttons.forEach(function (btn) {
+      btn.setAttribute('aria-pressed', btn.getAttribute('data-language') === lang ? 'true' : 'false');
+    });
+  }
+
+  function setLanguage(lang, options) {
+    if (!isSupported(lang)) return false;
+    applyLanguage(lang);
+    if (!options || options.persist !== false) writeStored(lang);
+    return true;
+  }
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      setLanguage(btn.getAttribute('data-language'));
+    });
+  });
+
+  applyLanguage(readStored() || DEFAULT_LANGUAGE);
+
+  window.gospelHub = {
+    translations: translations,
+    setLanguage: setLanguage
+  };
+})();
+</script>
+</body>
+</html>
